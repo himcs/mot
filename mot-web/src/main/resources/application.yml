@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mot-web
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/vote
+    username: root
+    password: root
+server:
+  port: 3001
+
+logging:
+  level:
+    io:
+      github:
+        himcs:
+          mot:
+            generator:
+              mapper: debug
