@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author mcs
- * @since 2021-05-07
+ * @since 2021-05-09
  */
 public interface VoteMapper extends BaseMapper<Vote> {
 

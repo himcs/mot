@@ -16,3 +16,6 @@ logging:
           mot:
             generator:
               mapper: debug
+mot:
+  auth:
+    enabled: true

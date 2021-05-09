@@ -1,4 +1,4 @@
-package io.github.himcs.mot.web.dto.user.req;
+package io.github.himcs.mot.dto.req;
 
 import lombok.Data;
 import lombok.ToString;
@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @ToString
-public class Login {
+public class LoginDTO {
     @NotNull
     private String username;
     @NotNull

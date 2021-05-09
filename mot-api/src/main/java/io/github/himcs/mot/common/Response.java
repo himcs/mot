@@ -21,4 +21,8 @@ public class Response {
     public static Response OK() {
         return Response.builder().code(200).message("OK").build();
     }
+
+    public static Response ERROR(String message) {
+        return Response.builder().code(500).message(message).build();
+    }
 }

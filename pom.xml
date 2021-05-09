@@ -9,6 +9,7 @@
         <module>mot-generator</module>
         <module>mot-web</module>
         <module>mot-api</module>
+        <module>mot-auth</module>
     </modules>
     <packaging>pom</packaging>
     <name>mot-back</name>

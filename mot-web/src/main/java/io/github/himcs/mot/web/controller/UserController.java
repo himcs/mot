@@ -1,12 +1,12 @@
 package io.github.himcs.mot.web.controller;
 
 
+import io.github.himcs.mot.api.UserApi;
 import io.github.himcs.mot.common.Response;
-import io.github.himcs.mot.web.api.UserApi;
-import io.github.himcs.mot.web.auth.AuthService;
-import io.github.himcs.mot.web.dto.user.req.Login;
+import io.github.himcs.mot.dto.req.LoginDTO;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import web.auth.AuthService;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -25,9 +25,8 @@ public class UserController implements UserApi {
     @Resource
     AuthService authService;
 
-
-    public Response login(@RequestBody @Valid Login login) {
-        String uuid = authService.login(login);
+    public Response login(@RequestBody @Valid LoginDTO login) {
+        String uuid = authService.login(login.getUsername(), login.getPassword());
         return Response.OK(uuid);
     }
 
