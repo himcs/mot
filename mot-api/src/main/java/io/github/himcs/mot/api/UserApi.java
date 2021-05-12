@@ -3,7 +3,9 @@ package io.github.himcs.mot.api;
 
 import io.github.himcs.mot.common.Response;
 import io.github.himcs.mot.dto.req.LoginDTO;
+import io.github.himcs.mot.generator.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,4 +31,7 @@ public interface UserApi {
     @GetMapping("/info")
     @Operation(summary = "info", security = @SecurityRequirement(name = "auth"))
     Response info();
+
+    @GetMapping("/test")
+     Response inject(@Parameter(hidden = true) User user);
 }

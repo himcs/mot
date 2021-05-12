@@ -1,4 +1,4 @@
-package web.auth;
+package io.github.himcs.mot.auth.auth;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.github.himcs.mot.generator.entity.User;

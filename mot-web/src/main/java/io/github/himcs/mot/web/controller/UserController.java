@@ -2,11 +2,13 @@ package io.github.himcs.mot.web.controller;
 
 
 import io.github.himcs.mot.api.UserApi;
+import io.github.himcs.mot.auth.annotation.CurrentUser;
+import io.github.himcs.mot.auth.auth.AuthService;
 import io.github.himcs.mot.common.Response;
 import io.github.himcs.mot.dto.req.LoginDTO;
+import io.github.himcs.mot.generator.entity.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import web.auth.AuthService;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -32,5 +34,9 @@ public class UserController implements UserApi {
 
     public Response info() {
         return Response.OK(authService.getCurrentUser());
+    }
+
+    public Response inject(@CurrentUser User user) {
+        return Response.OK(user.toString());
     }
 }

@@ -22,10 +22,6 @@
             <artifactId>mot-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>io.github.himcs</groupId>
-            <artifactId>mot-generator</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
 </project>
