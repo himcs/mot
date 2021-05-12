@@ -9,7 +9,7 @@ services:
     ports:
       - 3306:3306
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent" ]
       interval: 3s
       retries: 5
       start_period: 30s
@@ -20,9 +20,9 @@ services:
     networks:
       - spring-mysql
 volumes:
-  db-data: {}
+  db-data: { }
 secrets:
   db-password:
     file: db/password.txt
 networks:
-  spring-mysql: {}
+  spring-mysql: { }

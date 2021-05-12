@@ -1,10 +1,8 @@
 package io.github.himcs.mot.web.service;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.github.himcs.mot.generator.entity.User;
 import io.github.himcs.mot.generator.entity.Vote;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

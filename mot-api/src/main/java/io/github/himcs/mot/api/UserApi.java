@@ -33,5 +33,5 @@ public interface UserApi {
     Response info();
 
     @GetMapping("/test")
-     Response inject(@Parameter(hidden = true) User user);
+    Response inject(@Parameter(hidden = true) User user);
 }

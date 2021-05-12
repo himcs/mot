@@ -1,12 +1,12 @@
 package io.github.himcs.mot.web.configuration;
 
+import io.github.himcs.mot.auth.handler.UserFilter;
+import io.github.himcs.mot.auth.inject.CurrentUserMethodArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import io.github.himcs.mot.auth.handler.UserFilter;
-import io.github.himcs.mot.auth.inject.CurrentUserMethodArgumentResolver;
 
 import javax.annotation.Resource;
 import java.util.List;

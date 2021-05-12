@@ -1,14 +1,14 @@
 package io.github.himcs.mot.web.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.himcs.mot.generator.entity.Vote;
 import io.github.himcs.mot.generator.mapper.VoteMapper;
 import io.github.himcs.mot.web.service.IVoteService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author mcs

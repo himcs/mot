@@ -1,11 +1,11 @@
 package io.github.himcs.mot.generator.mapper;
 
-import io.github.himcs.mot.generator.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.github.himcs.mot.generator.entity.User;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author mcs

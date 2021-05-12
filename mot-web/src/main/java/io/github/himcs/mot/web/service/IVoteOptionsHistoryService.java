@@ -1,11 +1,11 @@
 package io.github.himcs.mot.web.service;
 
-import io.github.himcs.mot.generator.entity.VoteOptionsHistory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import io.github.himcs.mot.generator.entity.VoteOptionsHistory;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author mcs
