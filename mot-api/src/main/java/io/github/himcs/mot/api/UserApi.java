@@ -2,7 +2,7 @@ package io.github.himcs.mot.api;
 
 
 import io.github.himcs.mot.common.Response;
-import io.github.himcs.mot.dto.req.LoginDTO;
+import io.github.himcs.mot.dto.user.req.LoginDTO;
 import io.github.himcs.mot.generator.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

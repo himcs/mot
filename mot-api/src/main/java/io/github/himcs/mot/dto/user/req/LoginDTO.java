@@ -1,4 +1,4 @@
-package io.github.himcs.mot.dto.req;
+package io.github.himcs.mot.dto.user.req;
 
 import lombok.Data;
 import lombok.ToString;

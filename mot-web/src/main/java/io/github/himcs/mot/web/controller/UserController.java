@@ -5,7 +5,7 @@ import io.github.himcs.mot.api.UserApi;
 import io.github.himcs.mot.auth.annotation.CurrentUser;
 import io.github.himcs.mot.auth.auth.AuthService;
 import io.github.himcs.mot.common.Response;
-import io.github.himcs.mot.dto.req.LoginDTO;
+import io.github.himcs.mot.dto.user.req.LoginDTO;
 import io.github.himcs.mot.generator.entity.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author mcs
- * @since 2021-05-09
+ * @since 2021-05-16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -37,14 +37,17 @@ public class Vote implements Serializable {
     @TableField("context")
     private String context;
 
-    @TableField("create_time")
-    private LocalDateTime createTime;
+    @TableField("type")
+    private Integer type;
 
     @TableField("start_time")
     private LocalDateTime startTime;
 
     @TableField("end_time")
     private LocalDateTime endTime;
+
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
 
 }

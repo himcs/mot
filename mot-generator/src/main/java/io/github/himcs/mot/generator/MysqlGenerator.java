@@ -10,7 +10,9 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 public class MysqlGenerator {
 
-    static String[] tableName = new String[]{"user", "vote", "vote_options", "vote_options_history"};
+    //      "user", "vote", "vote_options", "vote_options_history"
+    static String[] tableName = new String[]{"vote"
+    };
 
     /**
      * RUN THIS
