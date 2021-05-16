@@ -6,6 +6,7 @@ import io.github.himcs.mot.api.VoteAPi;
 import io.github.himcs.mot.auth.annotation.CurrentUser;
 import io.github.himcs.mot.common.Response;
 import io.github.himcs.mot.dto.vote.req.VoteDTO;
+import io.github.himcs.mot.dto.vote.req.VotingDTO;
 import io.github.himcs.mot.dto.vote.res.VoteResDTO;
 import io.github.himcs.mot.generator.entity.User;
 import io.github.himcs.mot.generator.entity.Vote;
@@ -51,5 +52,10 @@ public class VoteController implements VoteAPi {
     public Response starred(Long page, Long perPage, @CurrentUser User user) {
         Page<Vote> pageRes = voteService.pageStarred(page, perPage, user);
         return Response.OK(pageRes);
+    }
+
+    @Override
+    public Response vote(VotingDTO votingDTO, User user) {
+        return null;
     }
 }

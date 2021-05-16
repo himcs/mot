@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.himcs.mot.dto.vote.req.VoteDTO;
 import io.github.himcs.mot.dto.vote.req.VoteOptionsDTO;
+import io.github.himcs.mot.dto.vote.req.VotingDTO;
 import io.github.himcs.mot.generator.entity.User;
 import io.github.himcs.mot.generator.entity.Vote;
 import org.junit.jupiter.api.Test;
@@ -76,5 +77,16 @@ class VoteServiceTests {
         user.setId(1);
         Page<Vote> page = voteService.pageStarred(1L, 10L, user);
         System.out.println(page);
+    }
+
+    @Test
+    void testVoting() {
+        User user = new User();
+        user.setId(1);
+        Page<Vote> page = voteService.pageStarred(1L, 10L, user);
+        VotingDTO votingDTO = new VotingDTO();
+        votingDTO.setVoteId(1);
+        votingDTO.setVoteOptions(Arrays.asList(1, 2, 3));
+        voteService.voting(votingDTO, user);
     }
 }

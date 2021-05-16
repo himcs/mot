@@ -3,6 +3,7 @@ package io.github.himcs.mot.api;
 import io.github.himcs.mot.common.DefaultPage;
 import io.github.himcs.mot.common.Response;
 import io.github.himcs.mot.dto.vote.req.VoteDTO;
+import io.github.himcs.mot.dto.vote.req.VotingDTO;
 import io.github.himcs.mot.generator.entity.User;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.bind.annotation.*;
@@ -20,5 +21,8 @@ public interface VoteAPi {
 
     @GetMapping("/{voteId}")
     Response detail(@PathVariable Integer voteId);
+
+    @PostMapping("/voting")
+    Response vote(@RequestBody VotingDTO votingDTO, @Parameter(hidden = true) User user);
 
 }

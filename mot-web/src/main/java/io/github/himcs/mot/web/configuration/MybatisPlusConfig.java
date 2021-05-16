@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("io.github.himcs.mot.generator.mapper")
+@MapperScan({"io.github.himcs.mot.generator.mapper", "io.github.himcs.mot.web.dao.mapper"})
 public class MybatisPlusConfig {
     // 最新版
     @Bean

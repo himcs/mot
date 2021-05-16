@@ -1,16 +1,22 @@
 package io.github.himcs.mot.web.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.himcs.mot.dto.vote.req.VoteDTO;
 import io.github.himcs.mot.dto.vote.req.VoteOptionsDTO;
+import io.github.himcs.mot.dto.vote.req.VotingDTO;
 import io.github.himcs.mot.dto.vote.res.VoteResDTO;
 import io.github.himcs.mot.generator.entity.User;
 import io.github.himcs.mot.generator.entity.Vote;
 import io.github.himcs.mot.generator.entity.VoteOptions;
+import io.github.himcs.mot.generator.entity.VoteOptionsHistory;
 import io.github.himcs.mot.generator.mapper.VoteMapper;
+import io.github.himcs.mot.web.dao.mapper.VoteOptionsExMapper;
+import io.github.himcs.mot.web.service.IVoteOptionsHistoryService;
 import io.github.himcs.mot.web.service.IVoteOptionsService;
 import io.github.himcs.mot.web.service.IVoteService;
 import io.github.himcs.mot.web.util.PageUtil;
@@ -19,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +45,16 @@ public class VoteServiceImpl extends ServiceImpl<VoteMapper, Vote> implements IV
 
     private IVoteOptionsService voteOptionsService;
 
+    private IVoteOptionsHistoryService voteOptionsHistoryService;
+
+    @Resource
+    private VoteOptionsExMapper voteOptionsExMapper;
 
     @Autowired
-    public VoteServiceImpl(VoteMapper voteMapper, IVoteOptionsService voteOptionsService) {
+    public VoteServiceImpl(VoteMapper voteMapper, IVoteOptionsService voteOptionsService, IVoteOptionsHistoryService voteOptionsHistoryService) {
         this.voteMapper = voteMapper;
         this.voteOptionsService = voteOptionsService;
+        this.voteOptionsHistoryService = voteOptionsHistoryService;
     }
 
     @Override
@@ -78,6 +90,32 @@ public class VoteServiceImpl extends ServiceImpl<VoteMapper, Vote> implements IV
         Page<Vote> page = PageUtil.instance(pageNum, perPage);
         page = voteMapper.selectPage(page, new QueryWrapper<Vote>().lambda().eq(Vote::getUserId, user.getId()));
         return page;
+    }
+
+    @Override
+    @Transactional
+    public void voting(VotingDTO votingDTO, User user) {
+        Integer voteId = votingDTO.getVoteId();
+        Integer userId = user.getId();
+        List<Integer> voteOptions = votingDTO.getVoteOptions();
+        List<VoteOptionsHistory> voteOptionsHistoryList = genVoteOptionsHistories(voteId, userId, voteOptions);
+        LambdaUpdateWrapper<VoteOptions> voteOptionsLambdaUpdateWrapper = new UpdateWrapper<VoteOptions>().lambda().setSql("vote_sum = vote_sum + 1");
+        voteOptionsHistoryService.saveBatch(voteOptionsHistoryList);
+        voteOptionsExMapper.updateSum(voteOptions);
+    }
+
+    private List<VoteOptionsHistory> genVoteOptionsHistories(Integer voteId, Integer userId, List<Integer> voteOptions) {
+        List<VoteOptionsHistory> voteOptionsHistoryList = new ArrayList<>(voteOptions.size());
+        LocalDateTime now = LocalDateTime.now();
+        for (Integer voteOption : voteOptions) {
+            VoteOptionsHistory voteOptionsHistory = new VoteOptionsHistory();
+            voteOptionsHistory.setVoteId(voteId);
+            voteOptionsHistory.setVoteOptionsId(voteOption);
+            voteOptionsHistory.setUserId(userId);
+            voteOptionsHistory.setCreateTime(now);
+            voteOptionsHistoryList.add(voteOptionsHistory);
+        }
+        return voteOptionsHistoryList;
     }
 
     private Integer saveVote(VoteDTO voteDTO, Integer userID) {
